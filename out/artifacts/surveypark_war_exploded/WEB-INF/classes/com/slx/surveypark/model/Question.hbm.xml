@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.slx.surveypark.model">
+	<!-- 1 配置类和表对应 
+		class标签
+		name属性：实体类全路径
+		table属性：数据库表名称
+	-->
+	<class name="Question" table="questions">
+		<id name="id" column="id" type="java.lang.Integer">
+			<generator class="identity"></generator>
+		</id>
+		<property name="questionType" column="questionType" type="java.lang.Integer"></property>
+		<property name="title" column="title" type="java.lang.String" length="100"></property>
+		<property name="options" column="options" type="java.lang.String" length="200"></property>
+		<property name="other" column="other" type="boolean"></property>
+		<property name="otherStyle" column="otherstyle" type="java.lang.Integer"></property>
+
+		<property name="otherSelectOptions" column="otherselectoptions" type="java.lang.String" length="200"></property>
+		<property name="matrixRowTitles" column="matrixrowtitles" type="java.lang.String" length="200"></property>
+		<property name="matrixColTitles" column="matrixcoltitles" type="boolean" length="200"></property>
+		<property name="matrixSelectOptions" column="matrixselectoptions" type="java.lang.String" length="200"></property>
+
+
+
+		<!--映射从question到page之间多对一的关联关系-->
+		<many-to-one name="page" class="Page" column="pageid"></many-to-one>
+
+	</class>
+</hibernate-mapping>
+
+
+
+
+
